@@ -1,5 +1,5 @@
 _paq.push(['setEcommerceView',
-  '<%= product.sku %>',
+  <%= product.to_json %>,
   '<%= product.name %>',
   <%= raw product.categories.to_json %>,
   <%= product.price %>
