@@ -3,7 +3,7 @@ module Spree
     class LineItem
       include ActiveModel::Model
 
-      ATTRIBUTES = [:sku, :name, :price, :quantity, :categories]
+      ATTRIBUTES = [:sku, :slug, :name, :price, :quantity, :categories]
       attr_accessor(*ATTRIBUTES)
 
       ##

@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe Spree::Piwik::LineItem, type: :model do
   describe '.from_product_ish' do
-    let(:product) { double(:product, sku: 'sku', name: 'name', price: 'price', quantity: 'quantity', taxons: []) }
+    let(:product) { double(:product, sku: 'sku', slug: 'slug', name: 'name', price: 'price', quantity: 'quantity', taxons: []) }
     let(:line_item) { Spree::Piwik::LineItem.from_product_ish(product) }
 
     it 'instantiates self from a line_item-ish item' do
       expect(line_item).to be_a_kind_of Spree::Piwik::LineItem
       expect(line_item.sku).to eq 'sku'
+      expect(line_item.slug).to eq 'slug'
       expect(line_item.name).to eq 'name'
       expect(line_item.price).to eq 'price'
       expect(line_item.quantity).to eq 'quantity'
@@ -42,6 +43,10 @@ describe Spree::Piwik::LineItem, type: :model do
   describe '#sku' do
     it { expect(subject).to respond_to :sku }
     it { expect(subject).to respond_to :sku= }
+  end
+  describe '#slug' do
+      it { expect(subject).to respond_to :slug }
+      it { expect(subject).to respond_to :slug= }
   end
   describe '#name' do
     it { expect(subject).to respond_to :name }

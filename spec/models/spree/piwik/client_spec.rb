@@ -13,10 +13,11 @@ describe Spree::Piwik::Client, type: :model do
 
   describe '#product' do
     context 'when it has a product' do
-      before { subject.product = double(:product, sku: 'sku', name: nil, price: nil, taxons: []) }
+      before { subject.product = double(:product, sku: 'sku', slug: 'slug', name: nil, price: nil, taxons: []) }
       it 'is an line_item with that product' do
         expect(subject.product).to be_a_kind_of Spree::Piwik::LineItem
         expect(subject.product.sku).to eq 'sku'
+        expect(subject.product.slug).to eq 'slug'
       end
     end
 
@@ -38,10 +39,11 @@ describe Spree::Piwik::Client, type: :model do
   describe '#ecommerce_items' do
     context 'when order is set' do
       it 'has the ine_items in the order' do
-        product = double(:product, sku: 'sku', name: 'name', price: 'price', quantity: 1)
+        product = double(:product, sku: 'sku', slug: 'slug', name: 'name', price: 'price', quantity: 1)
         subject.order = double(:order, line_items: [product])
         expect(subject.ecommerce_items.first).to be_a_kind_of Spree::Piwik::LineItem
         expect(subject.ecommerce_items.first.sku).to eq 'sku'
+        expect(subject.ecommerce_items.first.slug).to eq 'slug'
         expect(subject.ecommerce_items.first.quantity).to eq 1
       end
     end
