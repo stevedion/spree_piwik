@@ -1,6 +1,12 @@
 <!-- Piwik -->
 <script type="text/javascript">
     var _paq = _paq || [];
+
+	<!-- ACCOVIA -->
+	var visitor_id;
+    _paq.push([ function() { visitor_id = this.getVisitorId(); } ]);
+	console.log("ACCOVIA visitor_id=" + visitor_id);
+    
     (function(){ var u=(('https:' == document.location.protocol) ? 'https://<%= piwik_client.url %>/' : 'http://<%= piwik_client.url %>/');
     _paq.push(['setSiteId', <%= piwik_client.site_id %>]);
     _paq.push(['setTrackerUrl', u+'piwik.php']);

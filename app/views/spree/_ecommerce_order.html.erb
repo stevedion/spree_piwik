@@ -6,3 +6,8 @@ _paq.push(['trackEcommerceOrder',
   <%= order.ship_total %>,
   false
   ]);
+var visitor_id;
+_paq.push([ function() { visitor_id = this.getVisitorId(); }]);
+console.log("ACCOVIA visitor_id="+visitor_id);
+
+
