@@ -2,11 +2,6 @@
 <script type="text/javascript">
     var _paq = _paq || [];
 
-	<!-- ACCOVIA -->
-	var visitor_id;
-    _paq.push([ function() { visitor_id = this.getVisitorId(); } ]);
-console.log("ACCOVIA piwik visitor_id="+visitor_id);
-
     (function(){ var u=(('https:' == document.location.protocol) ? 'https://<%= piwik_client.url %>/' : 'http://<%= piwik_client.url %>/');
     _paq.push(['setSiteId', <%= piwik_client.site_id %>]);
     _paq.push(['setTrackerUrl', u+'piwik.php']);
@@ -26,5 +21,11 @@ console.log("ACCOVIA piwik visitor_id="+visitor_id);
     _paq.push(['enableLinkTracking']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
     s.parentNode.insertBefore(g,s); })();
+
+   	var visitor_id;
+    _paq.push([ function() { visitor_id = this.getVisitorId(); } ]);
+    console.log("sd piwik visitor_id="+visitor_id);
+    console.log("sd "+_paq);
+
 </script>
 <!-- End Piwik Code -->
